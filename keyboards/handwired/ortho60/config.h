@@ -35,6 +35,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS { B3, B4, B5, B6, B7 }
 #define DIODE_DIRECTION COL2ROW
 
+#define NUMBER_OF_ENCODERS 1
+#define ENCODERS_PAD_A { C14 }
+#define ENCODERS_PAD_B { C15 }
+#define TAP_CODE_DELAY 100
+
+#define ENCODER_RESOLUTION 4
+
 #define BACKLIGHT_LEVELS 1
 
 /* define if matrix has ghost */

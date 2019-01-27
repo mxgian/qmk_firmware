@@ -51,6 +51,7 @@ void encoder_init(void) {
     setPinInputHigh(encoders_pad_b[i]);
 
     encoder_state[i] = (readPin(encoders_pad_a[i]) << 0) | (readPin(encoders_pad_b[i]) << 1);
+	printf ("%i",encoder_state[i]);
   }
 }
 
@@ -61,9 +62,12 @@ void encoder_read(void) {
     encoder_value[i] += encoder_LUT[encoder_state[i] & 0xF];
     if (encoder_value[i] >= ENCODER_RESOLUTION) {
         encoder_update_kb(i, COUNTRECLOCKWISE);
+		//printf("ccw=%i",encoder_value[i]);
     }
     if (encoder_value[i] <= -ENCODER_RESOLUTION) { // direction is arbitrary here, but this clockwise
         encoder_update_kb(i, CLOCKWISE);
+		//printf("cw=%i",encoder_value[i]);
+		
     }
     encoder_value[i] %= ENCODER_RESOLUTION;
   }
