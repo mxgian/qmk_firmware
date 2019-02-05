@@ -1,5 +1,5 @@
 /*
-Copyright 2017 Luiz Ribeiro <luizribeiro@gmail.com>
+Copyright 2016 Luiz Ribeiro <luizribeiro@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,25 +15,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+// Please do not modify this file
 
-#define VENDOR_ID       0x20A0
-#define PRODUCT_ID      0x422E
-// TODO: share these strings with usbconfig.h
-// Edit usbconfig.h to change these.
-#define MANUFACTURER    TGR
-#define PRODUCT         TGR Alice
+#ifndef __I2C_H__
+#define __I2C_H__
 
-/* matrix size */
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 15
+void i2c_init(void);
+void i2c_set_bitrate(uint16_t bitrate_khz);
+uint8_t i2c_send(uint8_t address, uint8_t *data, uint16_t length);
 
-#define MATRIX_ROW_PINS { B0, B1, B2, B3, B4, B5 }
-#define MATRIX_COL_PINS { A0, A1, A2, A3, A4, A5, A6, A7, C7, C6, C5, C4, C3, C2, D7 }
-#define DIODE_DIRECTION COL2ROW
-
-#define RGBLED_NUM 20
-#define RGBLIGHT_ANIMATIONS
-
-#define NO_UART 1
-#define BOOTLOADHID_BOOTLOADER 1
+#endif
