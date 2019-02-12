@@ -35,13 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS { B3, B4, B5, B6, B7 }
 #define DIODE_DIRECTION COL2ROW
 
-#define NUMBER_OF_ENCODERS 1
-#define ENCODERS_PAD_A { C14 }
-#define ENCODERS_PAD_B { C15 }
-#define TAP_CODE_DELAY 100
-
-#define ENCODER_RESOLUTION 4
-
 #define BACKLIGHT_LEVELS 6
 #define BACKLIGHT_BREATHING
 #define BREATHING_PERIOD 6
@@ -49,6 +42,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
 
+#define NUMBER_OF_ENCODERS 1
+#define ENCODERS_PAD_A { C14 }
+#define ENCODERS_PAD_B { C15 }
+#define TAP_CODE_DELAY 100
+
+#define ENCODER_RESOLUTION 4
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE    5
 
@@ -59,7 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGBLIGHT_ANIMATIONS
 
-#define WS2812_LED_N 16
+#define WS2812_LED_N 5
 #define RGBLED_NUM WS2812_LED_N
 #define PORT_WS2812     GPIOB
 #define PIN_WS2812      15
