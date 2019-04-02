@@ -1,0 +1,93 @@
+
+git checkout master
+git merge upstream/master
+switch avr-gcc versions: echo 'export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"' >> ~/.bash_profile
+current version of avr-gcc is under /usr/local/bin
+
+
+bananasplit
+keyboard-dir:github/qmk_firmware/keyboard/thevankeyboards/bananasplit/minh
+make-dir: github/qmk_firmware
+make-cmd: make thevankeyboards/bananasplit:minh
+
+bdn9
+keyboard-dir:github/qmk_firmware/keyboard/keebio/bdn9/default
+make-dir: github/qmk_firmware
+make-cmd: make keebio/bdn9:minh  (dfu or avrdude)
+
+chicory40
+http://ydkb.io/#
+http://help.ydkb.io/doku.php?id=en:bootloader:boothid
+
+
+
+
+ergodash
+keyboard-dir:github/qmk_firmware/keyboard/ergodash/default
+make-dir: github/qmk_firmware
+switch avr-gcc versions: export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
+make-cmd: make ergodash/rev2:minh  (dfu or avrdude)
+
+espectro
+keyboard-dir:github/qmk_firmware/keyboard/espectro/minh
+make-dir: github/qmk_firmware
+make-cmd: make espectro:minh
+
+gherkin-rgb
+keyboard-dir:github/tmk_keyboard/keyboard/gherkin_rgb
+make-dir: github/tmk_keyboard/keyboard/gherkin_rgb
+make-cmd: make
+
+hb85 (not in the main qmk repo)
+keyboard-dir:github/qmk_firmware/keyboard/hb85/minh
+make-dir: github/qmk_firmware
+make-cmd: make hb85:default
+bootloadHID hb85_default.hex
+
+k-type
+keyboard-dir:github/qmk_firmware/keyboard/k_type/minh
+make-dir: github/qmk_firmware
+make-cmd: make k_type:minh
+
+mod dasher:
+keyboard-dir:github/qmk_firmware/keyboard/tr60w/minh
+make-dir: github/qmk_firmware
+make-cmd: make tr60w:minh
+
+ortho60
+keyboard-dir:github/qmk_firmware/keyboard/cannonkeys/ortho60/minh
+make-dir: github/qmk_firmware
+make-cmd: make cannonkeys/ortho60:minh
+dfu-util -d 1eaf:0003 -a 2 -D ./cannonkeys_ortho60_minh.bin
+
+(plancks share the same keymap file)
+planck r4
+keyboard-dir:github/qmk_firmware/keyboard/planck/minh
+make-dir: github/qmk_firmware
+make-cmd: make planck/rev4:minh
+
+planck r6
+keyboard-dir:github/qmk_firmware/keyboard/planck/minh
+make-dir: github/qmk_firmware
+make-cmd: make planck/rev6:minh
+
+roadkit
+keyboard-dir:github/qmk_firmware/keyboard/thevankeyboards/roadkit/minh
+make-dir: github/qmk_firmware
+make-cmd: make thevankeyboards/roadkit:minh
+
+ut47
+keyboard-dir:github/qmk_firmware/keyboard/40percentclub/ut47/minh
+make-dir: github/qmk_firmware
+make-cmd: make 40percentclub/ut47:minh
+
+whitefox
+keyboard-dir:github/qmk_firmware/keyboard/whitefox/minh
+make-dir: github/qmk_firmware
+make-cmd: make whitefox:minh
+dfu-util -D whitefox_minh.hex
+
+zlant
+keyboard-dir:github/qmk_firmware/keyboard/zlant/minh
+make-dir: github/qmk_firmware
+make-cmd: make zlant:minh
