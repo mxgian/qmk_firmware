@@ -34,7 +34,7 @@ void matrix_init_kb(void) {
 
 void matrix_scan_kb(void) {
   matrix_scan_user();
-  
+
 }
 */
 void matrix_init_kb(void) {
@@ -86,4 +86,35 @@ void matrix_init_user(void) {
 __attribute__((weak)) // overridable
 void matrix_scan_user(void) {
 
+}
+
+
+void backlight_init_ports(void) {
+    // initialize pins D0, D1, D4 and D6 as output
+    setPinOutput(D0);
+    setPinOutput(D1);
+    setPinOutput(D4);
+    setPinOutput(D6);
+
+    // turn RGB LEDs on
+    writePinHigh(D0);
+    writePinHigh(D1);
+    writePinHigh(D4);
+    writePinHigh(D6);
+}
+
+void backlight_set(uint8_t level) {
+	if (level == 0) {
+        // turn RGB LEDs off
+        writePinLow(D0);
+        writePinLow(D1);
+        writePinLow(D4);
+        writePinLow(D6);
+	} else {
+        // turn RGB LEDs on
+        writePinHigh(D0);
+        writePinHigh(D1);
+        writePinHigh(D4);
+        writePinHigh(D6);
+	}
 }
