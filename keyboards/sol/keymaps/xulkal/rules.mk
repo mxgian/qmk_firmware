@@ -12,20 +12,15 @@ RGBLIGHT_ENABLE         = no    # Enable global lighting effects. Do not enable 
 RGBLIGHT_ANIMATIONS     = no    # LED animations
 LED_MIRRORED            = no    # Mirror LEDs across halves (enable DIP 1 on slave, and DIP 2 and 3 on master)
 RGB_MATRIX_ENABLE       = WS2812    # Enable per-key coordinate based RGB effects. Do not enable with RGBlight (+8500)
-RGB_MATRIX_KEYPRESSES   = yes   # Enable reactive per-key effects. Can be very laggy (+1500)
+RGB_MATRIX_KEYPRESSES   = no    # Enable reactive per-key effects. Can be very laggy (+1500)
 RGBLIGHT_FULL_POWER     = no    # Allow maximum RGB brightness. Otherwise, limited to a safe level for a normal USB-A port
 UNICODE_ENABLE          = no    # Unicode
 SWAP_HANDS_ENABLE       = no    # Enable one-hand typing
-ENCODER_ENABLE_CUSTOM   = no    # Enable rotary encoder (+90)
 OLED_DRIVER_ENABLE      = yes   # Enable the OLED Driver (+5000)
+ENCODER_ENABLE          = no    # Enable rotary encoder (+90)
 IOS_DEVICE_ENABLE       = no    # Limit max brightness to connect to IOS device (iPad,iPhone)
 
 # Do not edit past here
-
-ifeq ($(strip $(ENCODER_ENABLE_CUSTOM)), yes)
-    OPT_DEFS += -DENCODER_ENABLE_CUSTOM
-    SRC += common/knob_v2.c
-endif
 
 ifeq ($(strip $(IOS_DEVICE_ENABLE)), yes)
     OPT_DEFS += -DIOS_DEVICE_ENABLE
