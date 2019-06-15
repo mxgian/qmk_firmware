@@ -8,7 +8,7 @@
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    TheRoyalSweatshirt
 #define PRODUCT         romac
-#define DESCRIPTION     A *Plaid inspired twelve-key macropad 
+#define DESCRIPTION     A *Plaid inspired twelve-key macropad
 /* key matrix size */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 3
@@ -34,7 +34,7 @@
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#define RGBLED_NUM 0
+//#define RGBLED_NUM 0
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
