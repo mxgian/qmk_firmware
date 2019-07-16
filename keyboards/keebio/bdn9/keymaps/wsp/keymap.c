@@ -16,31 +16,12 @@
 #include QMK_KEYBOARD_H
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /*
-        | Knob 1: Vol Dn/Up |      | Knob 2: Page Dn/Up |
-        | Press: Mute       | Home | Press: Play/Pause  |
-        | Hold: Layer 2     | Up   | RGB Mode           |
-        | Left              | Down | Right              |
-     */
-    [0] = LAYOUT(
-        KC_MUTE, KC_HOME, KC_MPLY,
-        MO(1)  , KC_UP  , RGB_MOD,
-        KC_LEFT, KC_DOWN, KC_RGHT
-    ),
-    /*
-        | RESET          | N/A  | Media Stop |
-        | Held: Layer 2  | Home | RGB Mode   |
-        | Media Previous | End  | Media Next |
-     */
-    [1] = LAYOUT(
-        RESET  , BL_STEP, KC_STOP,
-        _______, KC_HOME, RGB_MOD,
-        KC_MPRV, KC_END , KC_MNXT
-    ),
+	[0] = LAYOUT(KC_MUTE, KC_BSPC, BL_TOGG, MO(1), KC_ENT, KC_TAB, KC_CUT, KC_COPY, KC_PSTE),
+	[1] = LAYOUT(KC_MPLY, RGB_MOD, RGB_TOG, KC_TRNS, RGB_VAI, BL_STEP, KC_CALC, RGB_VAD, KC_MYCM),
+	
 };
 
 void encoder_update_user(uint8_t index, bool clockwise) {
-    int i;
     if (index == 0) {
         if (clockwise) {
             tap_code(KC_VOLU);
@@ -50,13 +31,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     }
     else if (index == 1) {
         if (clockwise) {
-            for (i=0;i<10;i++)
-            tap_code(KC_UP);
-
+            tap_code(KC_WH_U);
         } else {
-            for (i=0;i<10;i++)
-            tap_code(KC_DOWN);
-
+            tap_code(KC_WH_D);
         }
     }
 }

@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 /* in python2: list(u"whatever".encode('utf-16-le')) */
 /*   at most 32 characters or the ugly hack in usb_main.c borks */
-#define MANUFACTURER QMK
+#define MANUFACTURER Cannon Keys
 #define PRODUCT Ortho60
 #define DESCRIPTION Ortho60
 
@@ -41,6 +41,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
+
+//encoder stuff
 
 #define NUMBER_OF_ENCODERS 1
 #define ENCODERS_PAD_A { C14 }

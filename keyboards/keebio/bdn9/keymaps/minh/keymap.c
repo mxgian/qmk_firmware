@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         | Left              | Down | Right              |
      */
     [0] = LAYOUT(
-        KC_MUTE, KC_HOME, KC_MPLY,
+        KC_MUTE, KC_HOME, KC_WH_L,
         MO(1)  , KC_UP  , RGB_MOD,
         KC_LEFT, KC_DOWN, KC_RGHT
     ),
@@ -40,22 +40,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 void encoder_update_user(uint8_t index, bool clockwise) {
-    int i;
+    //int i;
     if (index == 0) {
         if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
             tap_code(KC_VOLD);
+        } else {
+            tap_code(KC_VOLU);
         }
     }
     else if (index == 1) {
         if (clockwise) {
-            for (i=0;i<10;i++)
-            tap_code(KC_UP);
+           // for (i=0;i<10;i++)
+          //  tap_code(KC_UP);
+          tap_code(KC_MS_WH_DOWN);
 
         } else {
-            for (i=0;i<10;i++)
-            tap_code(KC_DOWN);
+           // for (i=0;i<10;i++)
+         //   tap_code(KC_DOWN);
+          tap_code(KC_MS_WH_UP);
 
         }
     }

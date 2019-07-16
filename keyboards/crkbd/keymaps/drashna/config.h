@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-
+t
 
 /* Select hand configuration */
 
@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGBLIGHT_ENABLE
 #   undef RGBLED_NUM
-#   define RGBLED_NUM 27
+#   define RGBLED_NUM 28
 
 #   define RGBLIGHT_HUE_STEP 8
 #   define RGBLIGHT_SAT_STEP 8

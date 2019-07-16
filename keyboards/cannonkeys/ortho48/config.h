@@ -27,6 +27,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT Ortho48
 #define DESCRIPTION Ortho48
 
+#define NUMBER_OF_ENCODERS 1
+#define ENCODERS_PAD_A { A9 }
+#define ENCODERS_PAD_B { A10 }
+#define TAP_CODE_DELAY 100
+
+#define ENCODER_RESOLUTION 4
 /* key matrix size */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 12
