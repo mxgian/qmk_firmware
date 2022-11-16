@@ -38,6 +38,7 @@ extrakeebs=("planck/keymaps/minh-2spc")
 #grab the keebs that are custom or dont have a folder
 custom="minh"
 
+#git add commands
 for i in "${keeblist[@]}"
 do
 	echo "git add $prefix$i$user"
