@@ -1,4 +1,3 @@
-
 #include QMK_KEYBOARD_H
 
 
@@ -27,10 +26,10 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
-    KC_1, 	 KC_2,    KC_3,    KC_4,    KC_5,    KC_6,
+     KC_1, 	 KC_2,    KC_3,    KC_4,    KC_5,    KC_6,
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
     LT(_L3,KC_TAB),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, LT(_L2,KC_ENT),
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP, RSFT_T(KC_SLSH),
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_UP),
     KC_LCTL, KC_LALT, KC_LGUI, KC_ENT,  KC_ENT,   LT(_L1,KC_SPC),           KC_SPC,  LT(_L1,KC_LEFT), LT(_L2,KC_DOWN), LT(_L3,KC_RIGHT)
   ),
   [_DV] = LAYOUT( /* Dvorak */
@@ -48,25 +47,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, MO(_L2), KC_LGUI, KC_ENT,  KC_ENT,  KC_SPC,           KC_SPC,  KC_RALT, KC_ESC,  TG(_L3)
   ),
   [_L1] = LAYOUT( /* LAYER 1 */
-    KC_1, 	 KC_2,    KC_3,    KC_4,    KC_5,    KC_6,
+   KC_1, 	 KC_2,    KC_3,    KC_4,    KC_5,    KC_6,
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_DQUO,
-    _______, KC_ESC,  _______, KC_PSCR, _______, _______, _______, KC_MSTP, KC_MPLY, KC_MPRV, KC_MNXT, KC_RSFT,
+    _______,  KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, KC_MSTP, KC_MPLY, KC_MPRV, KC_MNXT, KC_RSFT,
     _______, KC_LGUI, _______, _______,          _______, _______,          _______, _______, _______, _______
   ),
   [_L2] = LAYOUT( /* LAYER 2 */
     KC_1, 	 KC_2,    KC_3,    KC_4,    KC_5,    KC_6,
     _______,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_QUOT,
-    _______, _______, _______, _______, _______, _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_VOLD, _______,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_1,    KC_2,    KC_3,    KC_VOLD, _______,
     _______, _______, _______, _______,          _______, _______,          _______, _______, _______, _______
   ),
-  [_L3] = LAYOUT( /* LAYER 3 */
+    [_L3] = LAYOUT( /* LAYER 3 */
     KC_F1, 	 KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F8,
-    _______, _______, KC_UP, _______, _______, _______, _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   RESET,
+    _______, _______, KC_UP, _______, _______, _______, _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_DEL,
     _______,  KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______, _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______,
-    KC_LSFT, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
-    _______, KC_LSFT, KC_B,    _______,          KC_SPC,  KC_C,             _______, _______, _______, RESET
+    KC_LSFT, RESET,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_F9,   KC_F10,  KC_F11,  KC_UP,  _______,
+    _______, KC_LSFT, KC_B,    _______,          KC_SPC,  KC_C,             _______, KC_LEFT, KC_DOWN, KC_RIGHT
   )
 };
 
@@ -98,6 +97,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 };
 
+
 void matrix_init_user(void) {
   // set Power LED to output and low
   setPinOutput(B6);
@@ -110,17 +110,28 @@ void matrix_init_user(void) {
 
 layer_state_t layer_state_set_user(layer_state_t state)
 {
-    if (layer_state_cmp(state, 1)) {
-        writePinHigh(B5);
-    } else if (state & (1<<2)) {
+    if (layer_state_cmp(state, 0)) {
+        writePinHigh(B6);
+         writePinLow(B5);
+        writePinLow(B4);
+    } else if (state & (1<<3)) {
+        writePinLow(B6);
         writePinLow(B5);
         writePinHigh(B4);
-    } else if (state & (1<<3)) {
+    } else if (state & (1<<4)) {
+        writePinLow(B6);
         writePinHigh(B5);
-        writePinHigh(B4);
+        writePinLow(B4);
+    } else if (state & (1<<5)) {
+        writePinHigh(B5);
+        writePinHigh(B6);
+         writePinHigh(B4);
+
     } else {
         writePinLow(B5);
         writePinLow(B4);
+        writePinLow(B6);
+
     }
     return state;
 }
