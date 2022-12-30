@@ -58,14 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 void process_indicator_update(layer_state_t state, uint8_t usb_led) {
-  for (int i = 0; i < 3; i++) {
-    setrgb(0, 0, 0, (LED_TYPE *)&led[i]);
-  }
-  setrgb(200, 23, 23, (LED_TYPE *)&led[0]);
-  setrgb(0, 255, 0, (LED_TYPE *)&led[1]);
-  setrgb(0, 0, 255, (LED_TYPE *)&led[2]);
 
-  rgblight_set();
 };
 
 void keyboard_post_init_user(void) {
@@ -76,9 +69,42 @@ void led_set_user(uint8_t usb_led) {
   process_indicator_update(layer_state, host_keyboard_leds());
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  process_indicator_update(state, host_keyboard_leds());
-    return state;
-};
 
+void matrix_init_user(void) {
+  // set Power LED to output and low
+  setPinOutput(B6);
+  writePinHigh(B6);
+
+  setPinOutput(B5);
+
+  setPinOutput(B4);
+}
+
+layer_state_t layer_state_set_user(layer_state_t state)
+{
+    if (layer_state_cmp(state, 0)) {
+        writePinHigh(B6);
+         writePinHigh(B5);
+        writePinHigh(B4);
+    } else if (state & (1<<1)) {
+        writePinHigh(B6);
+        writePinHigh(B5);
+        writePinLow(B4);
+    } else if (state & (1<<2)) {
+        writePinHigh(B6);
+        writePinLow(B5);
+        writePinHigh(B4);
+    } else if (state & (1<<3)) {
+        writePinLow(B5);
+        writePinLow(B6);
+         writePinLow(B4);
+
+    } else {
+        writePinLow(B5);
+        writePinLow(B4);
+        writePinLow(B6);
+
+    }
+    return state;
+}
 
